@@ -87,12 +87,83 @@ h = g;
 i = g;
 
 // 6. Modify-in-place
+let n = 2;
+n = n + 5;
+
+console.log(n); // 7
+
+// sama dengan
+let m = 2;
+m += 5;
+
+console.log(m); // 7
+
 // 7. Increment/Decrement
+// Menambah atau mengurangi suatu angka sebesar satu.
+// Hanya dapat diterapkan pada variabel.
+
+let increment = 2;
+increment++;
+
+console.log(increment); // 3
+
+let decrement = 2;
+decrement--;
+console.log(decrement); // 1
+
+/* Increment/Decrement bisa ditempatkan sebelum atau sesudah variabel.
+  * - Postfix => Operator diletakkan setelah variabel. increment++ 
+  * - Prefix => Operator diletakkan sebelum variabel. ++increment
+  *
+  * Perbedaanya adalah prefix me-return value baru, sedangkan postfix
+  * me-return value lama (sebelum operasi dilakukan). */
+let prefix = 1;
+a = ++prefix;
+
+console.log(a); // 2
+
+let postfix = 1;
+a = postfix++;
+
+console.log(a); // 1
+
 // 8. Bitwise operators
+// Operator Bitwise memperlakukan argumen sebagai bilangan
+// bulat 32-bit dan beroperasi pada tingkat representasi binernya.
+
+/* Daftar Operatornya:
+  * - AND (&)
+  * - OR (|)
+  * - XOR (^)
+  * - NOT (~)
+  * - LEFT SHIFT (<<)
+  * - RIGHT SHIFT (>>)
+  * - ZERO-FILL RIGHT SHIFT (>>>)
+  *
+  * Operator-operator ini jarang digunakan, kecuali saat kita perlu
+  * memanipulasi angka pada tingkat paling dasar (bitwise). */
+
 // 9. Comma
+// Operator comma memungkinkan untuk mengevaluasi beberapa ekspresi
+// dengan menggunakan tanda koma (,). setiap ekspresi dievaluasi,
+// namun hanya hasil dari ekspresi terakhir yang di-return.
+a = (1 + 2, 3 + 4);
 
+console.log(a); // 7 (the result of 3 + 4)
 
+/* Operator comma memiliki tingkat precedence yang sangat remdah,
+  * lebih rendah dari assignment. sehingga penggunaan tanda kurung
+  * menjadi penting pada contoh diatas
+  *
+  * tanpa tanda kurung:
+  * a = 1 + 2, 3 + 4
+  * a = 3, 7
+  * a = 3
+*/
 
-
+// Contoh penerapannya
+for (a = 1, b = 3, c = a * b; a < 10; a++) {
+  // ...
+}
 
 
