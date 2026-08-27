@@ -76,7 +76,22 @@ async function jalankanProgram() {
   console.log(accessAllowed);
 
   // 6. Multiple "?"
+  // Serangkaian question mark operators dapat me-return
+  // value yang bergantung pada lebih dari satu kondisi.
+  age = await rl.question("Age? ");
+
+  let message = (age < 3) ? "Hi, baby!" :
+    (age < 18) ? "Hello" :
+    (age < 100) ? "Greetings" :
+    "What an unusual age!";
+
+  console.log(message);
+
   // 7. Non-traditional use of "?"
+  // Terkadang question mark digunakan sebagai pengganti if.
+  let company = await rl.question("Which company created JavaScript? ");
+  (company == 'Netscape') ?
+    console.log("Right!") : console.log("Wrong.");
 
   rl.close();
 }
