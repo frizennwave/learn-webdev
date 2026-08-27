@@ -39,15 +39,57 @@ let nickName = "Supercoder";
 console.log(firstName ?? lastName ?? nickName ?? "Anonymous"); // Supercoder
 
 // 1. Comparison with ||
+// Operator OR juga bisa melakukan hal yang sama seperti contoh diatas.
+console.log(firstName || lastName || nickName || "Anonymous"); // Supercoder
+
+/* Perbedaan Nullish-coalescing operator dan operator OR adalah:
+  * - || => Me-return nilai truthy pertama.
+  * - ?? => Me-return nilai yang terdefinisi.
+  */
+
+let height = 0;
+
+console.log(height || 100); // 100
+console.log(height ?? 100); // 0
+
 // 2. Precedence
+/* Precedence dari (??) sama dengan (||). Keduanya memiliki nilai
+  * precedence 3 dalam tabel MDN.
+  * 
+  * Artinya, sama seperti (||), nullish-coalescing operator
+  * dijalankan sebelum (=) dan (?), namun setelah sebagian besar
+  * operator lainnya seperti + dan *.
+  *
+  * Oleh karena, itu kita memerlukan tanda kurung pada ekspresi
+  * seperti dibawah ini.
+  *
+  * Jika tidak, maka operasi * akan dijalankan terlebih dahulu
+  * yang menyebabkan hasil yang salah.
+  */
 
+height = null;
+let width = null;
+let area = (height ?? 100) * (width ?? 50);
 
+console.log(area); // 5000
 
+// without parentheses
+height = null;
+width = null;
 
+area = height ?? 100 * width ?? 50;
+console.log(area);
 
+area = height ?? (100 * width) ?? 50;
+console.log(area);
 
+// 3. Using ?? with && or ||
+/* Karena alasan keamanan, javascript melarang penggunaan
+  * ?? bersamaan dengan operator && dan ||, kecuali prioritasnya
+  * secara eksplisit ditentukan dengan tanda kurung.
+  */
 
+// let x = 1 && 2 ?? 3; // syntax error
 
-
-
-
+let x = (1 && 2) ?? 3; // works
+console.log(x); // 2
