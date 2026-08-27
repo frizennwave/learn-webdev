@@ -100,13 +100,51 @@ if (1 && 0) { // evaluated as true && false
 }
 
 // 4. AND "&&" find the first falsy value
+// result = value1 && value2 && value3;
+
+/* Operator AND:
+  * - mengevaluasi operand dari kiri ke kanan.
+  * - mengonversi setiap operand menjadi boolean. Jika hasilnya false,
+  *   return nilai asli operand tersebut.
+  * - jika semua operand telah dievaluasi (semua nilai truthy),
+  *   return operand terakhir.
+  *
+  *   Dengan kata lain, AND me-return nilai falsy pertama
+  *   atau nilai terakhir jika tidak ada nilai falsy yang ditemukan.
+  *
+  *   Precedence of AND is higher then OR.
+  */
+
+// The first operand is truthy
+console.log(1 && 0); // 0
+console.log(1 && 5); // 5
+
+// The first operand is falsy
+console.log(null && 5); // null
+console.log(0 && "no matter what"); // 0
+
+console.log(1 && 2 && null && 3); // null
+
+// when all values are truthy
+console.log(1 && 2 && 3); // 3
+
 // 5. ! (NOT)
+// Operator NOT direpresentasikan dengan exclamation (!).
+// result = !value;
 
+/* Operator ini menerima satu argumen dan melakukan:
+  * - Mengonversi operand menjadi boolean.
+  * - Me-return inverse value.
+  */
 
+console.log(!true); // false
+console.log(!0);    // true
 
+// Double NOT (!!) biasa digunakan untuk konversi ke boolean.
+console.log(!!"non-empty string");  // true
+console.log(!!null);                // false
 
-
-
+/* The precedence of NOT (!) is the highest of all logical operators. */
 
 
 
